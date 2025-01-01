@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Richardia is dumb.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon/favicon.ico" />
+    <style>
+      .decrease-iq {
+        background-color: white;
+        border-color: rgb(41, 118, 211);
+        border-style: solid;
+        border-width: 1px;
+        color: rgb(41, 118, 211);
+        height: 36px;
+        width: 100px;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      .decrease-iq:hover {
+        background-color: rgb(41, 118, 211);
+        color: white;
+      }
+
+      .decrease-iq:active {
+        opacity: 0.7;
+      }
+
+      .text {
+        font-weight: 900;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="decrease-iq" onclick="richardiaIQDecrease()">click me</button>
+    <div class="js-text text"></div>
+    <script>
+
+      let richardiaIQ = localStorage.getItem('richardiaIQ') || 0;
+
+      function richardiaIQDecrease() {
+        richardiaIQ -= 1;
+        document.querySelector('.js-text')
+          .innerHTML = `Richardia's IQ: ${richardiaIQ}  <div></div><img src="richardia-image.png" alt="richardia-image.png">`;
+        localStorage.setItem('richardiaIQ', richardiaIQ);
+        timer = 100
+        setTimeout(() => {
+          document.querySelector('.js-text')
+            .innerHTML = `Richardia's IQ: ${richardiaIQ}`
+        }, timer);
+      };
+
+      document.querySelector('.js-text')
+        .innerHTML = `Richardia's IQ: ${richardiaIQ}`
+      localStorage.setItem('richardiaIQ', richardiaIQ);
+
+    </script>
+  </body>
+</html>
