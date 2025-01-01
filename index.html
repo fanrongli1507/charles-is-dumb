@@ -35,13 +35,13 @@
     <div class="js-text text"></div>
     <script>
 
-      let richardiaIQ = JSON.parse(localStorage.getItem('richardiaIQ')) || 0;
+      let richardiaIQ = localStorage.getItem('richardiaIQ') || 0;
 
       function richardiaIQDecrease() {
         richardiaIQ -= 1;
         document.querySelector('.js-text')
           .innerHTML = `Richardia's IQ: ${richardiaIQ}  <div></div><img src="richardia-image.png" alt="richardia-image.png">`;
-        localStorage.setItem('richardiaIQ', JSON.stringify(richardiaIQ));
+        localStorage.setItem('richardiaIQ', richardiaIQ);
         timer = 100
         setTimeout(() => {
           document.querySelector('.js-text')
@@ -51,7 +51,7 @@
 
       document.querySelector('.js-text')
         .innerHTML = `Richardia's IQ: ${richardiaIQ}`
-      localStorage.setItem('richardiaIQ', JSON.stringify(richardiaIQ));
+      localStorage.setItem('richardiaIQ', richardiaIQ);
 
     </script>
   </body>
