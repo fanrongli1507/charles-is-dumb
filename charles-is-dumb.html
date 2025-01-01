@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .button {
+        padding: 10px;
+        background-color: green;
+        color: white;
+        border-radius: 69px;
+        cursor: pointer;
+        border: none;
+      }
+
+      .button:hover {
+        opacity: 0.8;
+      }
+
+      .button:active {
+        opacity: 0.5;
+      }
+
+      .text {
+        font-family: Arial;
+        padding: 10px;
+      }
+    </style>
+    <title>Charles is dumb</title>
+    
+  </head>
+  <body>
+    <button 
+      class="js-button button"
+      onclick="addCounter()"
+    >charles is dumb</button>
+    <div 
+      class="js-text text"
+    ></div>
+
+    <script>
+      let counter = JSON.parse(localStorage.getItem('charlesIsDumb'));
+
+      function textDisplay() {
+        let text = '';
+        for (let i = 0; i < counter; i++) {
+          text += '<div>charles is dumb</div>';
+        }
+        return text;
+      }
+
+      function addCounter() {
+        counter += 1;
+        const text = textDisplay();
+        document.querySelector('.js-text')
+          .innerHTML = text;
+
+        localStorage.setItem('charlesIsDumb', JSON.stringify(counter))
+      }
+
+
+      </script>
+  </body>
+</html>
