@@ -23,4 +23,11 @@ function send() {
   messageContainer.innerHTML = messageHTML + messageContainer.innerHTML;
 
   document.querySelector('.js-input').value = '';
+
+  const response = 'lol';
+
+  const responseHTML = `<div class="response message">${response}</div>`;
+
+  messageContainer.innerHTML = responseHTML + messageContainer.innerHTML;
+  document.querySelector('.js-input').value = '';
 }
