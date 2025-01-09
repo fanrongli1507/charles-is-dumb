@@ -17,6 +17,16 @@
   text-align: center;
 }
 
+
+.message {
+  width: 30%;
+  height: auto;
+  padding: 20px;
+  background-color: hsl(0, 0%, 25%);
+  border-radius: 10px;
+  color: white;
+  margin: 20px;
+}
 .heading {
   font-family: Arial;
   font-size: 50px;
@@ -100,7 +110,7 @@
   border-radius: 25px; /* Make the input element round (50% of height) */
   height: 50px; /* Set the height to 50px */
   padding: 0 15px; /* Add horizontal padding for inner spacing */
-  width: 500px; /* Optional: Make the input fill its container */
+  width: 60%; /* Optional: Make the input fill its container */
   box-sizing: border-box; /* Ensure padding doesn't increase the width */
   outline: none; /* Remove the default blue outline */
 }
