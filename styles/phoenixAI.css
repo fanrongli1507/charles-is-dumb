@@ -26,6 +26,10 @@
   border-radius: 10px;
   color: white;
   margin: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 .heading {
   font-family: Arial;
