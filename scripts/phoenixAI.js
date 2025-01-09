@@ -1,6 +1,9 @@
 const sendButton = document.querySelector('.js-send');
 sendButton.addEventListener('click', send);
 
+const sendButton1 = document.querySelector('.js-send');
+sendButton1.addEventListener('touch', send);
+
 const inputBar = document.querySelector('.js-input');
 inputBar.addEventListener('keydown', send);
 
