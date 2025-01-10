@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="styles/phoenixAI.css">
+    <link rel="stylesheet" href="styles/navbar.css">
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><img src="favicon/phoenix-image.png" alt="Your Logo" class="logo"></li>
-      <li><a href="index.html">Homepage</a></li>
-      <li><a href="richardia-is-dumb.html">Richardia is dumb</a></li>
-      <li><a href="charles-is-dumb.html">Charles is dumb</a></li>
-    </ul>
-  </nav>
-  <div class="heading-container">
-    <p class="heading">Phoenix AI</p>
+  <header>
+    <li><img src="favicon/phoenix-image.png" alt="logo" class="logo"></li>
+    <nav class="navbar">
+      <ul class="nav_links">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="richardia-is-dumb.html">Richardia is dumb</a></li>
+        <li><a href="charles-is-dumb.html">Charles is dumb</a></li>
+      </ul>
+    </nav>
+    <a class="contact" href="#"><button class="contact-us">Contact</button></a>
+  </header>
+  <div class="body-text">
+    <div class="heading-container">
+      <p class="heading">Phoenix AI</p>
+    </div>
+    <div class="input-container">
+      <input class="input js-input" placeholder="Enter your message">
+      <button class="send-button js-send"><img src="send-icon.png"></button>
+    </div>
+    <div class="js-text text"></div>
   </div>
-  <div class="input-container">
-    <input class="input js-input" placeholder="Enter your message">
-    <button class="send-button js-send"><img src="send-icon.png"></button>
-  </div>
-  <div class="js-text text"></div>
   <script src="scripts/phoenixAI.js"></script>
 </body>
 </html>
