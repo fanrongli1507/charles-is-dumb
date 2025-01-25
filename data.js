@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwp10oTLN-Gug_FTgNv8XnRsK7R8p5DRLIiquogW15DOT8wAUWq24hL7e-i4qyktwlE/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxQFLFqs2C86cFuQmnhv6ZYhV-E4IBLPmJBb_HZG4d6E_9QuT_zuTcdnJ9ZSOuvyji7/exec'
 
 const form = document.forms['appeal-form']
 
