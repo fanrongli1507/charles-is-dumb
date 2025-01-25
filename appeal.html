@@ -3,15 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="styles/appeal.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <header>
+    <li><img src="favicon/phoenix-image.png" alt="logo" class="logo"></li>
+    <nav class="navbar">
+      <ul class="nav_links">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="phoenixAI.html">Phoenix AI</a></li>
+        <li><a href="appeal.html">1P1 Nomination</a></li>
+      </ul>
+    </nav>
+    <a class="contact" href="#"><button class="contact-us">Contact</button></a>
+  </header>
+  <div class="title">1P1 Nomination Form</div>
   <div class="container">
     <form method="post" action="" name="appeal-form">
-      <input type="text" name="your-name" placeholder="Name">
-      <input type="text" name="your-nominee" placeholder="Your Nominee">
-      <input type="text" name="your-reason" placeholder="Your Reason">
-      <input type="submit" value="submit" id="submit">
+      <input type="text" name="your-name" class="your-name" placeholder="Name">
+      <input type="text" name="your-nominee" class="your-nominee" placeholder="Your Nominee">
+      <input type="text" name="your-reason" class="your-reason" placeholder="Your Reason">
+      <input type="submit" id="submit" class="submit">
     </form>
   </div>
   <script src="data.js"></script>

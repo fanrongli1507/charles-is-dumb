@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+.container {
+  background-image: linear-gradient(#000511, #000511,#f65b20);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  padding-bottom: 100%;
+  font-family:  "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  margin-bottom: 30px;
+  color: white;
+}
+.container input {
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid #f65b20;
+  background-color: white;
+}
+
+.container .submit {
+  cursor: pointer;
+}

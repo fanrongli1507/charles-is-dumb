@@ -24,8 +24,12 @@ function send() {
 
   document.querySelector('.js-input').value = '';
 
-  const response = 'lol';
-
+  const response = `Phoenix AI 124M is out!
+  Go to: https://github.com/fanrongli1507/Phoenix124M2.git
+  Make sure you have Python 3.12, 3.13 and 3.14 are not supported!
+  To start, run 'pip3 install requirements.txt'
+  Then, run 'python3 chat2.py'
+  Go to the localhost link provided. Most likely http://127.0.0.1:5000/`;
   const responseHTML = `<div class="response message">${response}</div>`;
 
   messageContainer.innerHTML = responseHTML + messageContainer.innerHTML;
