@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 
 .container {
-  background-image: linear-gradient(#000511, #000511,#f65b20);
+  --bg-color:linear-gradient(#000511, #000511,#f65b20);
+  background-image: var(--bg-color);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -14,41 +15,58 @@
   flex-direction: column;
 }
 
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px rgba(246, 91, 32, 0.3), 0 0 10px rgba(246, 91, 32, 0.2);
-    border-color: rgba(246, 91, 32, 0.3);
-  }
-  25% {
-    box-shadow: 0 0 10px rgba(91, 246, 123, 0.5), 0 0 20px rgba(91, 246, 123, 0.4);
-    border-color: rgba(91, 246, 123, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(32, 91, 246, 0.5), 0 0 30px rgba(32, 91, 246, 0.4);
-    border-color: rgba(32, 91, 246, 0.5);
-  }
-  75% {
-    box-shadow: 0 0 10px rgba(246, 91, 223, 0.5), 0 0 20px rgba(246, 91, 223, 0.4);
-    border-color: rgba(246, 91, 223, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(246, 91, 32, 0.3), 0 0 10px rgba(246, 91, 32, 0.2);
-    border-color: rgba(246, 91, 32, 0.3);
-  }
-}
-
 .container1 {
-  width: 60%;
-  background: black;
   position: relative;
-  z-index: 1;
-  padding: 20px;
-  border: 5px solid rgba(246, 91, 32, 0.3);
+  padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(246, 91, 32, 0.3), 0 0 10px rgba(246, 91, 32, 0.2);
-  animation: glow 4s infinite;
+  overflow: hidden;
+  z-index: 1;
+  background: black;
 }
 
+
+.container1::before{
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 60%;
+  background: linear-gradient(#00ccff,#d500f9);
+  animation: rotate 4s linear infinite;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  top: 25%;
+  left: -50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  padding: 5px;
+}
+
+.container1::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 10px;
+  z-index: -1;
+  background: #000511;
+}
+
+
+
+@keyframes rotate {
+  from{
+    transform:rotate(0deg)
+
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
+.container2 {
+  border-radius: 10px;
+  padding: 5px;
+  background: #000511;
+}
 .title {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
@@ -88,7 +106,7 @@
   outline: none;
 }
 .row {
-  background-color: #000511;
+  background: inherit;
 }
 
 .your-reason {
@@ -100,6 +118,7 @@
   padding: 10px;
   font-family: arial;
   background-color: black;
+  box-sizing: border-box;
 }
 
 textarea:focus {
@@ -110,27 +129,29 @@ textarea:focus {
 
 .submit {
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 10px;
   border: 1.5px solid #f65b20;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .submit:hover {
-  opacity: 0.8;
+  background-color: white;
+  color: black;
 
 }
 
 .submit:active {
-  opacity: 1;
-  border-color: #f65b20;
-  box-shadow: 0 0 20px rgba(246, 91, 32, 0.8), 0 0 40px rgba(246, 91, 32, 0.6);
-  outline: none;
+  opacity: 0.8;
+  background-color: white;
+  color: black;
 }
 .divider {
   padding: 10px;
-  background-color: black;
+  background:inherit;
 }
 
 .alerts {
@@ -141,4 +162,8 @@ textarea:focus {
   text-align: center;
   line-height: 1.5;
   background: inherit;
+}
+
+.input-others {
+  background:inherit;
 }
