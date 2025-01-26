@@ -1,12 +1,11 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxQFLFqs2C86cFuQmnhv6ZYhV-E4IBLPmJBb_HZG4d6E_9QuT_zuTcdnJ9ZSOuvyji7/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwKK_72gX_ilYbfblhpGthNfMMN4_wrGZFIxuhpCWACDi8B3Wue5GvGrL-AuzB4-Nsq/exec'
 
 const form = document.forms['appeal-form']
 
 form.addEventListener('submit', e => {
   
   e.preventDefault()
-  
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  fetch(scriptURL, { redirect: "follow", method: 'POST',mode: 'no-cors', body: new FormData(form)})
   .then(response => alert("Thank you! Form is submitted" ))
   .then(() => { window.location.reload(); })
   .catch(error => console.error('Error!', error.message))
