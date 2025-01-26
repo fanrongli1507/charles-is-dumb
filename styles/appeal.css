@@ -22,31 +22,36 @@
   overflow: hidden;
   z-index: 1;
   background: black;
+  box-shadow: 0 0 30px white;
+
 }
 
 
 .container1::before{
   content: '';
   position: absolute;
-  width: 200%;
-  height: 60%;
-  background: linear-gradient(#00ccff,#d500f9);
-  animation: rotate 4s linear infinite;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(#ff4545,#00ff99,#006aff,#ff0095,#ff4545);
+  animation: rotate 3s linear infinite;
   align-items: center;
   justify-content: center;
   display: flex;
-  top: 25%;
-  left: -50%;
+  top: -100%;
+  left: -100%;
   transform: translate(-50%, -50%);
   z-index: -2;
   padding: 5px;
+  filter: blur(rem);
+  box-shadow:inherit;
+
 }
 
 .container1::after {
   content: '';
   position: absolute;
   inset: 5px;
-  border-radius: 10px;
+  border-radius: 7px;
   z-index: -1;
   background: #000511;
 }
