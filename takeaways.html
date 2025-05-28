@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40px 60px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.top-bar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.top-bar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.header-with-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #444;
+  transition: color 0.3s;
+}
+
+.header-with-toggle:hover h3 {
+  color: #1e90ff;
+}
+
+.header-with-toggle h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.toggle-icon {
+  font-size: 2.5rem;
+  transition: transform 0.5s ease;
+  color: #ccc;
+}
+
+.collapsed .toggle-icon {
+  transform: rotate(0deg);
+}
+
+.expanded .toggle-icon {
+  transform: rotate(90deg);
+}
+
+.description {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    max-height 1s ease-in-out,
+    opacity 1s ease-in-out,
+    transform 1s ease-in-out;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.expanded + .description {
+  max-height: 1000px; /* increased max-height for smoother open */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.description h4 {
+  font-size: 1.4rem;
+  margin: 16px 0 8px;
+  color: #1e90ff;
+}
+
+.description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .page {
+    padding: 30px 20px;
+  }
+
+  .header-with-toggle h3 {
+    font-size: 1.6rem;
+  }
+
+  .description h4 {
+    font-size: 1.2rem;
+  }
+
+  .description p {
+    font-size: 1rem;
+  }
+}
+
+  </style>
+  <title>CCA</title>
+</head>
+<body>
+  <div class="page">
+    <div class="top-bar">
+      <a href="./slf.html">Back</a>
+    </div>
+    <div class="main-content">
+      <div class="text-content">
+        <div class="header-with-toggle collapsed" onclick="toggleDescription(this)">
+          <h3>Takeaways</h3>
+        </div>
+        <div class="description">
+          <h4>Patience</h4>
+          <p>Reading Odyssey has taught me how to deal with children that are not the most obedient. When I explain some math concepts with my friend, I will go through step by step and make sure he does not have any doubts or misconceptions.</p>
+          <h4>Self Control</h4>
+          <p>While preparing for my examinations, I realised that I had constantly lacked the motivation to continue, and would often ended up being distracted. I realised if I had focused on my actions and only that of the present moment, I could gain an deeper awareness of my actions and enter the state of flow more easily.</p>
+            <h4>Teamwork</h4>
+            <p>I learnt to accept suggestions and criticism from my classmates and use them to improve on myself.</p>
+        <h4>PERMA+ Model</h4>
+        <p>At HCIBS, there was a good environment to foster good habits, like sleeping earlier. I used this chance at IBP to form good habits, such as sleeping earlier, waking up on time, etc.</p>
+        <p>Simply meeting my friends is where I find meaning in coming to school. I believe the inherent value comes from the nuances in school life, e.g. taking notes, saying words of appreciation to the canteen vendors, etc.</p>
+        <p>Positive Emotions: I gain satisfaction not from my achievements, but from knowing that I put in extreme amounts of hard work to attain such a goal. Being constantly grateful also allows me to appreciate the subtleties around me.</p>
+    </div>
+
+    </div>
+  </div>
+  <script>
+    function toggleDescription(header) {
+      const isCollapsed = header.classList.contains('collapsed');
+      header.classList.toggle('collapsed', !isCollapsed);
+      header.classList.toggle('expanded', isCollapsed);
+      const description = header.nextElementSibling;
+      if (description) {
+        description.classList.toggle('expanded', isCollapsed);
+      }
+    }
+  </script>
+  
+</body>
+</html>

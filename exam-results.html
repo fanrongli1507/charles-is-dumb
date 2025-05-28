@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 40px 60px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .top-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .image-content {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .image-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .text-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-with-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 12px;
+    }
+
+    .header-with-toggle h3 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .toggle-icon {
+      display: inline-block;
+      font-size: 3rem;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .collapsed .toggle-icon {
+      transform: rotate(0deg);
+    }
+
+    .expanded .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    .description {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition:
+        max-height 1s ease-in-out,
+        opacity 1s ease-in-out,
+        transform 1s ease-in-out;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 20px;
+    }
+
+    .expanded + .description {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .description p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      .text-content h3 {
+        font-size: 36px;
+      }
+    }
+
+    .grades-table-container {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  margin-bottom: 4rem;
+}
+
+.grades-table th,
+.grades-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grades-table th {
+  background-color: #1a1a1a;
+  font-weight: 600;
+}
+
+.grades-table tr:hover {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.grades-table .summary th,
+.grades-table .summary td {
+  font-weight: bold;
+  background-color: #222;
+}
+
+  </style>
+  <title>Exam Preparation</title>
+</head>
+<body>
+  <div class="page">
+    <div class="top-bar">
+      <a href="./slf.html">Back</a>
+      <span>8 — 8</span>
+    </div>
+    <div class="main-content">
+        <div class="text-content">
+          <div class="header-with-toggle expanded" onclick="toggleDescription(this)">
+            <h3>Exam Results</h3>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="description">
+            <p>学以致用，用以促学</p>
+            <p>English Definition: Study for the sake of application，put into practice what one has learnt.</p>
+            <p></p>
+          </div>
+      
+          <div class="grades-table-container">
+            <table class="grades-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Assignment</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>English</td><td>Term 1 Common Test - Narrative Essay</td><td>22/30</td><td>A2 (Missed A1 by 0.5)</td></tr>
+                <tr><td>Chinese</td><td>Term 2 Common Test - Narrative Essay</td><td>33/30</td><td>A1, Second Highest</td></tr>
+                <tr><td>Science</td><td>Term 2 AA - Poster Design (Separation)</td><td>15/18</td><td>A1</td></tr>
+                <tr><td>Math</td><td>Term 2 Common Test</td><td>30(31)/30</td><td>A1</td></tr>
+                <tr><td>Chinese Lit</td><td>Term 2 AA - Story Creation</td><td>34/30</td><td>A1 (Top Score 35)</td></tr>
+                <tr><td>Geography</td><td>Term 2 Common Test</td><td>18.5/25</td><td>A2 (Missed A1 by 0.5)</td></tr>
+                <tr><td>History</td><td>Term 2 Common Test</td><td>19/20</td><td>A1, Highest</td></tr>
+                <tr><td>Infocomm</td><td>Theory Test</td><td>27/30</td><td>A1</td></tr>
+                <tr><td>Infocomm</td><td>Practical Test</td><td>40/40</td><td>A1, Full Marks</td></tr>
+                <tr><td>Infocomm</td><td>Overall Results (Web Publishing)</td><td>96.3%</td><td>A1</td></tr>
+                <tr class="summary"><th colspan="2">MSG</th><th>10/8</th><th>1.25</th></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+
+  <script>
+    function toggleDescription(element) {
+      const isExpanded = element.classList.contains('expanded');
+      element.classList.toggle('expanded', !isExpanded);
+      element.classList.toggle('collapsed', isExpanded);
+    }
+  </script>
+</body>
+</html>
