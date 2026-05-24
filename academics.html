@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academics</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    #header {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+    }
+    #header a {
+      color: inherit;
+      text-decoration: none;
+    }
+    #header div {
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+      opacity: 0.6;
+    }
+    #header div:hover,
+    #header div.active {
+      opacity: 1;
+      color: #ccc;
+      border-bottom: 2px solid white;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 60vh;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      font-weight: normal;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    
+    /* Top Metrics Container */
+    .top-metrics {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .metric-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 2rem;
+      flex: 1;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: #555;
+    }
+    
+    .metric-label {
+      color: #888;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    
+    .metric-value {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    
+    .metric-value.highlight {
+      color: #f59e0b;
+      text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+    
+    .metric-value.goal {
+      color: #3b82f6;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      font-size: 2.5rem;
+    }
+
+    h3.section-title {
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-weight: normal;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #333;
+    }
+    
+    /* Subjects Grid */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    
+    .subject-card {
+      background: linear-gradient(145deg, #161616, #0e0e0e);
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .subject-card:hover {
+      border-color: #555;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    
+    .subject-name {
+      font-size: 1.1rem;
+      color: #eee;
+      letter-spacing: 1px;
+    }
+    
+    .grade-badge {
+      background: rgba(245, 158, 11, 0.1);
+      color: #fbbf24;
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+    }
+    
+    /* Initiative Section */
+    .initiative-card {
+      background: #111;
+      border-left: 4px solid #10b981;
+      border-radius: 8px;
+      padding: 2.5rem;
+      position: relative;
+    }
+    
+    .initiative-title {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 2rem;
+      font-weight: normal;
+      letter-spacing: 1px;
+    }
+    
+    .initiative-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .info-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .info-label {
+      color: #10b981;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    
+    .info-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    
+    .tag {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      color: #ddd;
+      transition: border-color 0.3s;
+    }
+    
+    .tag:hover {
+      border-color: #10b981;
+    }
+    
+    .info-text {
+      color: #ddd;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #222;
+    }
+
+    #footer {
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.5rem;
+      letter-spacing: 1px;
+      color: #aaa;
+      margin-top: 4rem;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 600px) {
+      .top-metrics {
+        flex-direction: column;
+      }
+      .subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="index.html"><div>Experiences</div></a>
+    <a href="takeaways.html"><div>Takeaways</div></a>
+    <a href="academics.html"><div class="active">Academics</div></a>
+  </div>
+
+  <div class="container">
+    <h1>Academic Achievements</h1>
+
+    <div class="top-metrics">
+      <div class="metric-card">
+        <div class="metric-label">Current MSG</div>
+        <div class="metric-value highlight">1.0</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Target Goal</div>
+        <div class="metric-value goal">CTP / SMTP</div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">Results</h3>
+    <div class="subjects-grid">
+      <div class="subject-card">
+        <div class="subject-name">English</div>
+        <div class="grade-badge">A1</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-name">Math</div>
+        <div class="grade-badge">A1</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-name">Science</div>
+        <div class="grade-badge">A1</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-name">Geography</div>
+        <div class="grade-badge">A1</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-name">History</div>
+        <div class="grade-badge">A1</div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-name">Infocomm</div>
+        <div class="grade-badge">A1</div>
+      </div>
+    </div>
+
+    <h3 class="section-title">Class Initiative</h3>
+    <div class="initiative-card">
+      <div class="initiative-title">Subject Consultation Sessions</div>
+      
+      <div class="initiative-content">
+        <div class="info-group">
+          <div class="info-label">Subjects Offered</div>
+          <div class="info-tags">
+            <span class="tag">English</span>
+            <span class="tag">Science</span>
+            <span class="tag">Science Practical</span>
+            <span class="tag">Geography</span>
+            <span class="tag">History</span>
+            <span class="tag">Infocomm Theory</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-label">Attendance & Engagement</div>
+          <div class="info-text">
+            Frequent attendance from the class, consistently drawing <strong>over 10 people</strong>, and reaching a peak of <strong>16 people</strong> for the English Expository Class Test Revision.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">SLF by Xiao Haoxuan</div>
+</body>
+</html>

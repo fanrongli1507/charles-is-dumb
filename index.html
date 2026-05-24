@@ -1,25 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Scroll Gallery</title>
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+      background-color: black;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    #header {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+    }
+
+    #header a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #header div {
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+      opacity: 0.6;
+    }
+
+    #header div:hover,
+    #header div.active {
+      opacity: 1;
+      color: #ccc;
+      border-bottom: 2px solid white;
+    }
+
+    #footer {
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.5rem;
+      letter-spacing: 1px;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+
+    #image-track {
+      display: flex;
+      gap: 4vmin;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      will-change: transform;
+    }
+
+    #image-track>.image {
+      width: 40vmin;
+      height: 56vmin;
+      object-fit: cover;
+      object-position: 100% center;
+      user-select: none;
+      -webkit-user-drag: none;
+      will-change: object-position;
+    }
+
+  </style>
 </head>
+
 <body>
-  <header>
-    <li><img src="favicon/phoenix-image.png" alt="logo" class="logo"></li>
-    <nav class="navbar">
-      <ul class="nav_links">
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="phoenixAI.html">Phoenix AI</a></li>
-        <li><a href="appeal.html">1P1 Nomination</a></li>
-      </ul>
-    </nav>
-    <a class="contact" href="#"><button class="contact-us">Contact</button></a>
-  </header>
-  
+  <div id="header">
+    <a href="index.html"><div class="active">Experiences</div></a>
+    <a href="takeaways.html"><div>Takeaways</div></a>
+    <a href="academics.html"><div>Academics</div></a>
+  </div>
+
+  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+    <img id="img-founders" class="image clickable" src="assets/foundersday.jpg" draggable="false">
+    <img id="img-exchange" class="image clickable" src="assets/exchange.jpg" draggable="false">
+    <img id="img-cca" class="image clickable" src="assets/cca.jpg" draggable="false">
+    <img id="img-sabbatical" class="image clickable" src="assets/hcmas.jpg" draggable="false">
+    <img id="img-volunteering" class="image clickable" src="assets/ro.jpg" draggable="false">
+    <img id="img-calligraphy" class="image clickable" src="assets/calligraphy.jpg" draggable="false">
+  </div>
+
+  <div id="footer">SLF by Xiao Haoxuan</div>
+
+  <script>
+    const track = document.getElementById('image-track');
+    
+    // Using lerp for smoother scroll animations instead of repeated element.animate
+    let currentPercentage = 0;
+    let targetPercentage = 0;
+    
+    let isDragging = false;
+    let mouseDownAt = 0;
+    let prevPercentage = 0;
+    let startX = 0;
+    let startY = 0;
+    let clickStartTime = 0;
+    let isClick = false;
+    
+    function animate() {
+      // Lerp (linear interpolation) to smoothly glide to the target percentage
+      currentPercentage += (targetPercentage - currentPercentage) * 0.08;
+      
+      track.style.transform = `translate(${currentPercentage}%, -50%)`;
+      
+      for (const image of track.getElementsByClassName("image")) {
+        image.style.objectPosition = `${100 + currentPercentage}% center`;
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    // Start animation loop
+    requestAnimationFrame(animate);
+
+    const handleDown = e => {
+      isDragging = false;
+      mouseDownAt = e.clientX || (e.touches && e.touches[0].clientX);
+      prevPercentage = targetPercentage;
+      startX = mouseDownAt;
+      startY = e.clientY || (e.touches && e.touches[0].clientY);
+      clickStartTime = Date.now();
+      isClick = true;
+    };
+
+    const handleMove = e => {
+      if (mouseDownAt === 0) return;
+
+      const currentX = e.clientX || (e.touches && e.touches[0].clientX);
+      const currentY = e.clientY || (e.touches && e.touches[0].clientY);
+
+      const mouseDeltaX = Math.abs(currentX - startX);
+      const mouseDeltaY = Math.abs(currentY - startY);
+
+      if (mouseDeltaX > 5 || mouseDeltaY > 5) {
+        isClick = false;
+        isDragging = true;
+      }
+
+      if (isDragging) {
+        const mouseDelta = mouseDownAt - currentX;
+        const maxDelta = window.innerWidth / 2;
+
+        let percentage = (mouseDelta / maxDelta) * -100 * 0.8;
+        let nextPercentage = prevPercentage + percentage;
+
+        targetPercentage = Math.max(Math.min(nextPercentage, 0), -100);
+      }
+    };
+    
+    const handleUp = e => {
+      if (isClick && Date.now() - clickStartTime < 300) {
+        const targetClass = e.target.classList;
+        if (targetClass && targetClass.contains('clickable')) {
+          const redirects = {
+            "img-founders": "founders-day.html",
+            "img-exchange": "school-exchange.html",
+            "img-cca": "cca-debate.html",
+            "img-sabbatical": "mun.html",
+            "img-volunteering": "volunteering.html",
+            "img-calligraphy": "calligraphy.html"
+          };
+
+          const targetId = e.target.id;
+          if (redirects[targetId]) {
+            window.location.href = redirects[targetId];
+          }
+        }
+      }
+
+      isDragging = false;
+      mouseDownAt = 0;
+    };
+
+    // Mouse events
+    track.onmousedown = handleDown;
+    track.onmousemove = handleMove;
+    track.onmouseup = handleUp;
+    track.onmouseleave = handleUp;
+    
+    // Touch events
+    track.ontouchstart = handleDown;
+    track.ontouchmove = handleMove;
+    track.ontouchend = handleUp;
+
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.classList.contains('image')) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
-</html> 
+
+</html>

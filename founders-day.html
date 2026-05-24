@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founders’ Day</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    #header {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1.5rem;
+    }
+    #header a {
+      color: inherit;
+      text-decoration: none;
+    }
+    #header div {
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+      opacity: 0.6;
+    }
+    #header div:hover,
+    #header div.active {
+      opacity: 1;
+      color: #ccc;
+      border-bottom: 2px solid white;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 60vh;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #aaa;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .back-btn:hover {
+      color: white;
+    }
+    .hero-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: normal;
+    }
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: normal;
+      color: #ccc;
+    }
+    p, ul {
+      line-height: 1.6;
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .doc-link {
+        color: #fff;
+        text-decoration: underline;
+        opacity: 0.8;
+    }
+    .doc-link:hover {
+        opacity: 1;
+    }
+    #footer {
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.5rem;
+      letter-spacing: 1px;
+      color: #aaa;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <a href="index.html"><div class="active">Experiences</div></a>
+    <a href="takeaways.html"><div>Takeaways</div></a>
+    <a href="academics.html"><div>Academics</div></a>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">&larr; Back to Gallery</a>
+    <img src="assets/foundersday.jpg" class="hero-img" alt="VIA Founders’ Day">
+    <h1>VIA Founders’ Day</h1>
+    <ul>
+      <li>A very special day to celebrate the school's founding</li>
+      <li>Went around a neighbourhood in Jurong West, distributing small gifts to residents</li>
+      <li>Took the initiative of knocking on doors and engaging with the community</li>
+      <li>Built teamwork and communications skills among me and my teammates</li>
+    </ul>
+  </div>
+
+  <div id="footer">SLF by Xiao Haoxuan</div>
+</body>
+</html>
